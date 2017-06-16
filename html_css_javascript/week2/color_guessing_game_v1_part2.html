@@ -1,0 +1,108 @@
+<html>
+	<head>
+		<title>Color guessing game</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+
+			var colors = (function () {
+				
+				function getRandomInt(min, max) {
+  					min = Math.ceil(min);
+  					max = Math.floor(max);
+  					return Math.floor(Math.random() * (max - min)) + min;
+  				}
+
+				var _colorsArray = ["lavender", "slateblue", "aqua", "teal", "mistyrose",
+						  "honeydew", "cyan", "seagreen", "forestgreen", "darkorange", 
+						  "plum", "navy", "rosybrown"];
+
+				_colorsArray.sort();
+
+				var _randomColor = _colorsArray[getRandomInt(0, _colorsArray.length)];
+
+				return {
+					getColor: function() {
+						return _randomColor;
+					},
+
+					getColors: function() {
+						return _colorsArray;
+					},
+
+					getHintString: function(c) {
+						if (c < _randomColor) {
+							return "Hint: Your color is alphabeticly lower than mine.";
+						} else if(c > _randomColor) {
+							return "Hint: your color is alphabeticly greater than mine.";
+						}
+					}
+				};
+			})();
+			
+
+			playGame();
+
+			function playGame() {
+				var colorArray = colors.getColors();
+				var randomColor = colors.getColor();
+				var numOfGuesses = 0;
+
+				//alert(randomColor);
+
+				var guess = guessPrompt(colorArray);
+				numOfGuesses = numOfGuesses + 1;
+
+				do {
+					if (guess === null) {
+						return;
+					}
+
+					if (guess == randomColor) {
+						break;
+					}
+
+					if (!colorArray.includes(guess)) {
+						unrecognizedColorAlert();
+					}
+
+					alert("Sorry your guess is not correct!" + "\n\n" +
+						colors.getHintString(guess) + "\n\n" + 
+						"Please try again.");
+
+					guess = guessPrompt(colorArray);
+					numOfGuesses = numOfGuesses + 1;
+				} while (true);
+
+                changeBackground(randomColor);
+                wonPrompt(numOfGuesses);
+			}
+
+			function unrecognizedColorAlert() {
+				alert("Sorry, I did not recognize your color." + "\n\n" +
+					"Please try again.")
+			}
+
+			function guessPrompt(arr) {
+				return prompt("I am thinking of one of these colors \n\n" +
+					         arr + "\n\n" + "What color am I thinking of?");
+			}
+
+			function wonPrompt(numOfGuesses) {
+				var guessString = "";
+				if (numOfGuesses === 1) {
+					guessString = " guess";
+				} else {
+					guessString = " guesses";
+				}
+				alert("Congratulations!  You have guessed the color!" + "\n\n" + 
+					"It took you " + numOfGuesses + guessString + " to finish the game." + "\n\n" +
+					"You can see your color in the background");
+			}
+
+			function changeBackground(color) {
+   				document.body.style.background = color;
+			}
+		</script>
+	</body>
+</html>

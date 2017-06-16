@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>Matching Game</title>
+		<style>
+			.div {
+				width: 500px;
+				height: 500px;
+				position: absolute;
+			}
+
+			#rightside {
+				left: 500px;
+				border-left: 1px solid black;
+			}
+			.smile {
+				position: absolute;
+			}
+		</style>			
+	</head>
+	<body>
+		<h1 id="bodytitle">Matching Game</h1>		
+		<p id="instrucitons">Click on the extra smiling face on the left hand side</p>
+
+		<div id="leftside" class="div">
+		</div>
+		<div id="rightside" class="div">
+		</div>
+
+		<script type="text/javascript">
+			class Smiley {
+				constructor () {
+					this.numberOfFaces = 6;
+					this.step = 5;
+					this.theLeftSide = document.getElementById("leftside");
+					this.theRightSide = document.getElementById("rightside");
+					this.imgsrc = "http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png"
+				}
+
+				generateFaces() {
+					var i;
+					for (i = 0; i < this.numberOfFaces; i++) {
+						let face = this.generateFace(Math.trunc(Math.random() * 401),
+						Math.trunc(Math.random() * 401));
+						this.theLeftSide.appendChild(face);
+					}
+					let leftFaces = this.theLeftSide.cloneNode(true);
+					leftFaces.removeChild(leftFaces.lastChild);
+					this.theRightSide.appendChild(leftFaces);
+				}
+
+				generateFace(top, left) {
+					let img = document.createElement("img");
+					img.src = this.imgsrc;
+					img.style.top = top;
+					img.style.left = left;
+					img.style.position = "absolute";
+					return img;
+				}
+			}
+
+			var startGame = function () {
+				smiley = new Smiley();
+				smiley.generateFaces();
+			}
+
+			startGame();
+		</script>
+	</body>
+</html>

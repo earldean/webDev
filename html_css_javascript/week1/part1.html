@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<body>
+	<form action="https://ihome.ust.hk/~rossiter/cgi-bin/show_everything.php" method="post" enctype="multipart/form-data">
+	<h1>Please Enter Your Details For Our Dating Website</h1>
+	<body>
+	<fieldset>
+		<legend>Upload Your Picture</legend>
+
+		<label for="avatar">Your Image</label>
+		<input type="file" id="avatar" name="avatar" required>
+		<br>
+		<label for="preview">Image Preview</label>
+		<img id="preview" name="preview">
+	</fieldset>	
+	<br>
+
+	<fieldset>
+		<legend>Your General Details</legend>
+
+		<label for="name">Name</label>
+		<input type="text" id="name" name="name" required></input>
+		<br>
+
+		<label for="gender">Gender</label>
+		<input type="radio" id="male" name="gender" value="male" required/>
+		<label for="male">Male</input> 
+		<input type="radio" id"=female" name="gender" value="female" required/>
+		<label for="female">Female</input>
+		<br>
+
+		<label for="age">Age</label>
+		<input type="number" id="age" name="age" required>
+		<br>
+
+		<label for="dob">Date of birth</label>
+		<input type="date" id"dob" name="dob"/>
+		<br> 
+
+		<label for"address">Address</label>
+		<textarea id="address" rows="3" name="address">
+		</textarea>
+		<br>
+
+		<label for="country">Which couuntry:</label>
+		<select name="country" id="country">
+			<option value="usa">USA</option>
+			<option value="canada">Canada</option>
+			<option value="mexico">Mexico</option>
+			<option value="england">England</option>
+			<option value="france">France</option>
+			<option value=""></option>
+		</select>
+	</fieldset>
+	<br>
+
+	<fieldset>	
+		<legend>About You</legend>
+
+		<label for="height">Height</label>
+		Short <input type="range" id="height" name="height" min="0" max="100" required/> Tall
+		<br>
+
+		<label for="salary">Salary</label>
+		Poor <input type="range" id="salary" name="salary" min="0" max="100" required/> Rich
+		<br>
+	</fieldset>
+	<br>
+
+	<fieldset>
+		<legend>Contacat information</legend>
+
+		<label for="email">Email</label>
+		<input type="email" id="email" name="email" required/>
+		<br>
+
+		<label for="mobile">Mobile</label>
+		<input type="tel" id="mobile" name="mobile"/>
+		<br>
+
+		<label for"address">Address</label>
+		<input type="textarea" id="address" name="address"/>
+		<br>
+
+		<input type="checkbox" id="email" name="contact" value="email"/>
+		<label for="email">Emal</label> 
+
+		<input type="checkbox" id="whatsapp" name="contact" value="whatsapp"/>
+		<label for="whatsapp">Whatsapp</label>
+
+		<input type="checkbox" id="inapp" name="contact" value="app"/> 
+		<label for="inapp">In-app chat</label>
+	</fieldset>
+	<input type="submit"/>
+	</form>
+</body>
+</html>
